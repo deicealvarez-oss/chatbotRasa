@@ -1,0 +1,6 @@
+.rasa/
+models/
+chat/
+.venv/
+__pycache__/
+*.log

@@ -1,0 +1,32 @@
+version: "3.1"
+
+rules:
+  - rule: responder saludo
+    steps:
+      - intent: saludar
+      - action: utter_saludo
+
+  - rule: responder consultar precios
+    steps:
+      - intent: consultar_precios
+      - action: utter_precio
+
+  - rule: responder confirmar envio
+    steps:
+      - intent: confirmar_envio
+      - action: utter_envio
+
+  - rule: responder despedida
+    steps:
+      - intent: despedirse
+      - action: utter_despedida
+
+  - rule: responder estado
+    steps:
+      - intent: estado
+      - action: utter_estado
+
+  - rule: responder solicitar servicio
+    steps:
+      - intent: solicitar_servicio
+      - action: utter_servicio

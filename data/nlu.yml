@@ -1,0 +1,80 @@
+version: "3.1"
+
+nlu:
+  - intent: saludar
+    examples: |
+      - Hola
+      - que tal
+      - Buenos días
+      - Buenas tardes
+      - Buenas noches
+      - para solicitar el servicio de lavadora
+      - necesito una lavadora
+
+  - intent: consultar_precios
+    examples: |
+      - ¿Cuánto cuesta el servicio de lavadora para el fin de semana?
+      - Precios del servicio de lavadoras
+      - ¿Cuál es el costo para 24 horas?
+      - ¿Cuál es el costo para 12 horas?
+      - cuanto cuesta el alquiler por una lavadora
+
+  - intent: confirmar_envio
+    examples: |
+      - confirmar servicio a [pajonal](direccion)
+      - confirmar el pedido a [la esmeralda](direccion)
+      - listo, confirmar
+      - confirmar
+
+  - intent: solicitar_servicio
+    examples: |
+      - quiero el servicio de [12](hora) para [36 Kg](tamaño)
+      - quiero el servicio de [24](hora) para [12 Kg](tamaño)
+      - quiero el servicio de [36](hora) para [8 Kg](tamaño)
+      - necesito una de [8 Kg](tamaño) por [24](hora) horas
+
+  - intent: estado
+    examples: |
+      - ¿Cómo va mi pedido?
+      - Quiero saber si ya traen la lavadora
+      - ya salio la lavadora
+      - estado de mi pedido
+
+  - intent: despedirse
+    examples: |
+      - adiós
+      - hasta luego
+      - gracias
+      - muchas gracias
+      - nos vemos
+      - chao
+
+  - synonym: 12 horas
+    examples: |
+      - medio dia
+      - doce horas
+      - 12
+
+  - synonym: 24 horas
+    examples: |
+      - un dia
+      - 24
+
+  - synonym: costo
+    examples: |
+      - pago
+      - pagar
+      - precio
+
+  - synonym: 8 Kg
+    examples: |
+      - pequeña
+      - chica
+
+  - synonym: 12 Kg
+    examples: |
+      - mediana
+
+  - synonym: 36 Kg
+    examples: |
+      - grande

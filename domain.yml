@@ -1,0 +1,53 @@
+version: "3.1"
+
+intents:
+  - saludar
+  - consultar_precios
+  - confirmar_envio
+  - estado
+  - solicitar_servicio
+  - despedirse
+
+entities:
+  - tamaño
+  - hora
+  - direccion
+
+slots:
+  direccion:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: direccion
+  tamaño:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: tamaño
+  hora:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: hora
+
+responses:
+  utter_saludo:
+    - text: "¡Hola! Bienvenido a LavaFlash. ¿En qué puedo ayudarte hoy?"
+
+  utter_precio:
+    - text: "Nuestros precios dependen del tiempo. Por ejemplo, el servicio de {hora} tiene un costo base, y si es para segundo piso tiene un adicional de $5000."
+
+  utter_envio:
+    - text: "¡Claro! He registrado la dirección: {direccion}. ¿Deseas confirmar el pedido?"
+
+  utter_despedida: 
+    - text: "Gracias por usar el servicio de LavaFlash. ¡Hasta luego!"
+
+  utter_estado:
+    - text: "Verificando solicitud: Lavadora de {tamaño} para la dirección {direccion} por un tiempo de {hora}."
+
+  utter_servicio: 
+    - text: "Perfecto, procesando tu solicitud de una lavadora {tamaño} por {hora} horas."
