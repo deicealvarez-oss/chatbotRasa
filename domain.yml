@@ -4,31 +4,36 @@ intents:
   - saludar
   - consultar_precios
   - confirmar_envio
-  - estado
   - solicitar_servicio
+  - estado
+  - disponibilidad
+  - pago
+  - reportar_falla
+  - solicitar_recoleccion
+  - cancelar_servicio
   - despedirse
 
 entities:
-  - tamaño
+  - tamano
   - hora
   - direccion
 
 slots:
   direccion:
     type: text
-    influence_conversation: false
+    influence_conversation: true
     mappings:
       - type: from_entity
         entity: direccion
-  tamaño:
+  tamano:
     type: text
-    influence_conversation: false
+    influence_conversation: true
     mappings:
       - type: from_entity
-        entity: tamaño
+        entity: tamano
   hora:
     type: text
-    influence_conversation: false
+    influence_conversation: true
     mappings:
       - type: from_entity
         entity: hora
@@ -37,17 +42,38 @@ responses:
   utter_saludo:
     - text: "¡Hola! Bienvenido a LavaFlash. ¿En qué puedo ayudarte hoy?"
 
-  utter_precio:
-    - text: "Nuestros precios dependen del tiempo. Por ejemplo, el servicio de {hora} tiene un costo base, y si es para segundo piso tiene un adicional de $5000."
+  utter_precios:
+    - text: "Manejamos alquileres por 12 horas (medio día) y 24 horas (un día completo) para tamaños pequeños, medianos y grandes. Si la entrega es para un segundo piso, tiene un adicional de $5000."
 
   utter_envio:
     - text: "¡Claro! He registrado la dirección: {direccion}. ¿Deseas confirmar el pedido?"
 
-  utter_despedida: 
+  utter_servicio:
+    - text: "Perfecto, procesando tu solicitud de una lavadora {tamano} por un tiempo de {hora}."
+
+  utter_tamano:
+    - text: "¿De qué tamaño necesitas la lavadora? (Manejamos de 8 Kg, 12 Kg o 36 Kg)"
+
+  utter_hora:
+    - text: "¿Por cuánto tiempo la requieres? (¿12 o 24 horas?)"
+
+  utter_estado_pedido:
+    - text: "Verificando tu solicitud: Lavadora de {tamano} para la dirección {direccion} por un tiempo de {hora}."
+
+  utter_disponibilidad:
+    - text: "Sí, actualmente contamos con lavadoras de diferentes tamaños disponibles para entrega inmediata."
+
+  utter_metodos_pago:
+    - text: "Puedes realizar tu pago en efectivo al momento de la entrega, o de forma anticipada por transferencia bancaria o Nequi."
+
+  utter_reportar_falla:
+    - text: "Lamento el inconveniente con la lavadora. Por favor, compártenos los detalles del problema o tu dirección para enviar soporte técnico de inmediato."
+
+  utter_solicitar_recoleccion:
+    - text: "¡Entendido! Ya registramos la solicitud de recolección. El transporte pasará pronto por la lavadora."
+
+  utter_cancelar_servicio:
+    - text: "Tu pedido ha sido cancelado, si necesitas algo más estoy atento para ayudarte."
+
+  utter_despedida:
     - text: "Gracias por usar el servicio de LavaFlash. ¡Hasta luego!"
-
-  utter_estado:
-    - text: "Verificando solicitud: Lavadora de {tamaño} para la dirección {direccion} por un tiempo de {hora}."
-
-  utter_servicio: 
-    - text: "Perfecto, procesando tu solicitud de una lavadora {tamaño} por {hora} horas."

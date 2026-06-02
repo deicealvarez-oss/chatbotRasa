@@ -1,32 +1,77 @@
 version: "3.1"
 
 rules:
-  - rule: responder saludo
+  - rule: Responder al saludo
     steps:
       - intent: saludar
       - action: utter_saludo
 
-  - rule: responder consultar precios
+  - rule: Responder consulta de precios
     steps:
       - intent: consultar_precios
-      - action: utter_precio
+      - action: utter_precios
 
-  - rule: responder confirmar envio
+  - rule: Responder confirmacion de envio
     steps:
       - intent: confirmar_envio
       - action: utter_envio
 
-  - rule: responder despedida
+  - rule: Solicitar tamaño si falta al pedir servicio
     steps:
-      - intent: despedirse
-      - action: utter_despedida
+      - intent: solicitar_servicio
+      - slot_was_set:
+          - tamano: null
+      - action: utter_tamano
 
-  - rule: responder estado
+  - rule: Solicitar horas si falta el tiempo pero ya hay tamaño
+    condition:
+      - slot_was_set:
+          - tamano: true
     steps:
-      - intent: estado
-      - action: utter_estado
+      - slot_was_set:
+          - hora: null
+      - action: utter_hora
 
-  - rule: responder solicitar servicio
+  - rule: Responder solicitud de servicio SOLO si los datos ya existen
+    condition:
+      - slot_was_set:
+          - tamano: true
+          - hora: true
     steps:
       - intent: solicitar_servicio
       - action: utter_servicio
+
+  - rule: Responder consulta sobre el estado del pedido
+    steps:
+      - intent: estado
+      - action: utter_estado_pedido
+
+  - rule: Responder sobre disponibilidad de lavadoras
+    steps:
+      - intent: disponibilidad
+      - action: utter_disponibilidad
+
+  - rule: Responder sobre métodos de pago
+    steps:
+      - intent: pago
+      - action: utter_metodos_pago
+
+  - rule: Atender reporte de falla
+    steps:
+      - intent: reportar_falla
+      - action: utter_reportar_falla
+      
+  - rule: Atender solicitud de recolección
+    steps:
+      - intent: solicitar_recoleccion
+      - action: utter_solicitar_recoleccion
+
+  - rule: Cancelar el servicio
+    steps:
+      - intent: cancelar_servicio
+      - action: utter_cancelar_servicio
+
+  - rule: Responder a la despedida
+    steps:
+      - intent: despedirse
+      - action: utter_despedida

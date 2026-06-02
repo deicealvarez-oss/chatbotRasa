@@ -3,36 +3,65 @@ version: "3.1"
 nlu:
   - intent: saludar
     examples: |
-      - Hola
-      - que tal
-      - Buenos días
-      - Buenas tardes
-      - Buenas noches
-      - para solicitar el servicio de lavadora
-      - necesito una lavadora
-
-  - intent: consultar_precios
-    examples: |
-      - ¿Cuánto cuesta el servicio de lavadora para el fin de semana?
-      - Precios del servicio de lavadoras
-      - ¿Cuál es el costo para 24 horas?
-      - ¿Cuál es el costo para 12 horas?
-      - cuanto cuesta el alquiler por una lavadora
-
-  - intent: confirmar_envio
-    examples: |
-      - confirmar servicio a [pajonal](direccion)
-      - confirmar el pedido a [la esmeralda](direccion)
-      - listo, confirmar
-      - confirmar
+      - hola
+      - buenos días
+      - buenas tardes
+      - hey
+      - qué tal
 
   - intent: solicitar_servicio
     examples: |
-      - quiero el servicio de [12](hora) para [36 Kg](tamaño)
-      - quiero el servicio de [24](hora) para [12 Kg](tamaño)
-      - quiero el servicio de [36](hora) para [8 Kg](tamaño)
-      - necesito una de [8 Kg](tamaño) por [24](hora) horas
+      - quiero una lavadora [grande](tamano) de [12 horas](hora)
+      - quiero una lavadora [mediana](tamano) de [24 horas](hora)
+      - quiero una lavadora [pequeña](tamano) de [12 horas](hora)
+      - deseo una lavadora [grande](tamano) de [36 horas](hora)
+      - pídeme una lavadora [mediana](tamano) de [24 horas](hora)
+      - necesito una lavadora [pequeña](tamano) de [12 horas](hora)
+      - quiero pedir una lavadora [grande](tamano) de [24 horas](hora)
+      - una lavadora [pequeña](tamano) de [12 horas](hora)
+      - lavadora [mediana](tamano) de [24 horas](hora)
+      - lavadora [grande](tamano) de [12 horas](hora)
 
+  - intent: confirmar_envio
+    examples: |
+      - confirmar pedido
+      - confirmo el pedido
+      - sí, confirma el pedido
+      - confirma mi lavadora
+      - está bien, confirma
+      - correcto, confirma el pedido
+      - sí, esa lavadora está bien
+      - listo, confirmar
+      - ok, confirma
+      - confirma
+      - confirmar servicio a [pajonal](direccion)
+      - confirmar el pedido a [la esmeralda](direccion)
+
+  - intent: consultar_precios
+    examples: |
+      - qué lavadoras tienen
+      - muéstrame el menú de precios
+      - cuál es el catálogo de precios
+      - qué tamaños hay
+      - tienen lavadora de 12 Kg
+
+  - intent: pago
+    examples: |
+      - cuanto es el costo por la lavadora [mediana](tamano) 
+      - cuanto es el costo por la lavadora [grande](tamano)
+      - quiero pagar mi pedido de lavadora
+      - cuanto seria el costo de mi pedido
+      - voy a pagar
+
+  - intent: despedirse
+    examples: |
+      - adiós
+      - hasta luego
+      - gracias
+      - chao
+      - nos vemos
+
+  # --- INTENCIONES SOPORTE DE LAVANDERÍA ---
   - intent: estado
     examples: |
       - ¿Cómo va mi pedido?
@@ -40,41 +69,54 @@ nlu:
       - ya salio la lavadora
       - estado de mi pedido
 
-  - intent: despedirse
+  - intent: disponibilidad
     examples: |
-      - adiós
-      - hasta luego
-      - gracias
-      - muchas gracias
-      - nos vemos
-      - chao
+      - ¿tienen lavadoras disponibles para hoy?
+      - ¿les queda alguna lavadora?
+      - ¿hay disponibilidad ahorita?
+      - quiero saber si tienen lavadoras disponibles
 
-  - synonym: 12 horas
+  - intent: reportar_falla
     examples: |
-      - medio dia
-      - doce horas
-      - 12
+      - la lavadora no funciona
+      - la máquina bota agua
+      - la lavadora se detuvo
+      - me mandaron una lavadora mala
 
-  - synonym: 24 horas
+  - intent: solicitar_recoleccion
     examples: |
-      - un dia
-      - 24
+      - ya terminé de usarla, pueden venir a recogerla
+      - por favor recoger la lavadora
+      - ¿a qué hora pasan a recoger la lavadora?
+
+  - intent: cancelar_servicio
+    examples: |
+      - quiero cancelar mi pedido
+      - ya no necesito la lavadora, gracias
+      - cancela el envío por favor
+
+  # --- SINÓNIMOS ---
+  - synonym: pepperoni
+    examples: |
+      - peperoni
+      - peperonni
+
+  - synonym: pequeña
+    examples: |
+      - pequena
+      - chica
+      - 8 Kg
+
+  - synonym: mediana
+    examples: |
+      - 12 Kg
+
+  - synonym: grande
+    examples: |
+      - 36 Kg
 
   - synonym: costo
     examples: |
       - pago
       - pagar
       - precio
-
-  - synonym: 8 Kg
-    examples: |
-      - pequeña
-      - chica
-
-  - synonym: 12 Kg
-    examples: |
-      - mediana
-
-  - synonym: 36 Kg
-    examples: |
-      - grande
